@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - API_KEY=${API_KEY}
+      - CHROMA_DIR=/data/chroma
+      - LLM_PROVIDER=${LLM_PROVIDER}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+  chroma:
+    image: chromadb/chromadb:0.4.3
+    environment:
+      - CHROMA_DB_IMPL=duckdb+parquet
+    volumes:
+      - chroma_data:/data
+  worker:
+    build: .
+    command: python -u app/worker.py
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - API_KEY=${API_KEY}
+    depends_on:
+      - redis
+volumes:
+  chroma_data:

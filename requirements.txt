@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-multipart
+requests
+redis
+chromadb
+sentence-transformers
+langchain
+transformers
+pandas
+python-dotenv

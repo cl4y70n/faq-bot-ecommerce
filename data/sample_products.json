@@ -1,0 +1,9 @@
+{
+  "products": [
+    {"id": "p1", "title": "Sneaker Classic", "description": "Comfortable sneaker with rubber sole, available in sizes 38-44. Ships within 2 business days."},
+    {"id": "p2", "title": "Waterproof Jacket", "description": "Lightweight waterproof jacket, breathable membrane, perfect for hiking. Free exchange within 30 days."},
+    {"id": "p3", "title": "Wireless Earbuds", "description": "Noise-cancelling earbuds, 8h battery life, includes USB-C charging case. 1-year warranty."},
+    {"id": "p4", "title": "Organic Coffee Beans", "description": "100% Arabica, roasted medium, 250g bag. Shipping: 3-5 business days."},
+    {"id": "p5", "title": "Yoga Mat", "description": "Eco-friendly yoga mat, non-slip surface, dimensions 183x61cm. Free returns for damage."}
+  ]
+}

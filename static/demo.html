@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>FAQ Bot Demo</title></head>
+<body>
+<h2>FAQ Bot Demo</h2>
+<div>
+  <input id="query" placeholder="Ask about a product or shipping..." style="width:60%"/>
+  <button onclick="ask()">Ask</button>
+</div>
+<pre id="out"></pre>
+<script>
+async function ask(){
+  const q = document.getElementById('query').value;
+  const res = await fetch('/query', {
+    method: 'POST',
+    headers: {'content-type':'application/json','x-api-key':'changeme123'},
+    body: JSON.stringify({q})
+  });
+  const j = await res.json();
+  document.getElementById('out').textContent = JSON.stringify(j, null, 2);
+}
+</script>
+</body>
+</html>
